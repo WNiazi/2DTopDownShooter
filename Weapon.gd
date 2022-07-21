@@ -1,13 +1,14 @@
 extends Node2D
 class_name Weapon 
 
+signal weapon_ammo_changed (new_ammo_count)
 signal weapon_out_of_ammo
 
 
 export (PackedScene) var Bullet
 
 var max_ammo: int = 30
-var current_ammo: int = max_ammo   
+var current_ammo: int = max_ammo setget set_current_ammo
 
 
 onready var end_of_gun =$EndOfGun 
@@ -26,15 +27,26 @@ func start_reload():
 	
 func _stop_reload(): 
 	current_ammo = max_ammo 
+	emit_signal("weapon_ammo_changed", current_ammo)
 	#add to animaltion_finished under animation player+> node ; if this happens then call on "reload"
 
+func set_current_ammo(new_ammo: int) : 
+	var actual_ammo =clamp (new_ammo, 0, max_ammo)
+	if actual_ammo != current_ammo:
+		current_ammo =actual_ammo
+		if current_ammo == 0: 
+			emit_signal("weapon_out_of_ammo")
+		
+		emit_signal("weapon_ammo_changed", current_ammo)
+	
+	
 func shoot (): 
 	if current_ammo!= 0: 
 		var bullet_instance = Bullet.instance()
 		var direction = (gun_direction.global_position -end_of_gun.global_position).normalized()
 		GlobalSignals.emit_signal("bullet_fired", bullet_instance, end_of_gun.global_position, direction)
 		animation_player.play("muzzle_flash")
-		current_ammo -= 1
-		if current_ammo == 0:
-			emit_signal("weapon_out_of_ammo")
+		set_current_ammo(current_ammo -1)
+
+		
 

@@ -1,13 +1,14 @@
 extends KinematicBody2D
 class_name Player
 
+signal player_health_changed(new_health) 
 signal died 
 
 export (int) var speed =100 
 
 
 onready var health_stat = $Health
-onready var weapon = $Weapon
+onready var weapon: Weapon = $Weapon
 
 
 
@@ -41,5 +42,11 @@ func reload ():
 	
 func handle_hit():
 	health_stat.health -= 20
-	print("player hit", health_stat.health)
-	
+	emit_signal ("player_health_changed", health_stat.health)
+	if health_stat.health<=0: 
+		die() 
+		
+		
+func die(): 
+	emit_signal ("died")
+	queue_free () 
