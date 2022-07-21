@@ -3,6 +3,9 @@ extends Node2D
 
 onready var bullet_manager =$BulletManager 
 onready var player: Player =$Player 
+#onready var camera=$Player/Camera2D
+onready var gui =$GUI
+
 
 
 func _ready() -> void: 

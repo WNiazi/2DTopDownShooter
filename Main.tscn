@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://assets/kenney_topdowntanksredux/Tilesheet/TX Tileset Grass.png" type="Texture" id=5]
 [ext_resource path="res://assets/kenney_topdowntanksredux/Tilesheet/TX Props.png" type="Texture" id=6]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=7]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Grass.png "
@@ -327,3 +328,5 @@ script = ExtResource( 3 )
 tile_set = SubResource( 12 )
 format = 1
 tile_data = PoolIntArray( -262131, 2, 0, -131071, 3, 0, -131059, 5, 0, -65535, 0, 0, -65533, 2, 0, 8, 1, 0, 65552, 1, 0, 196611, 5, 0, 196616, 1, 0 )
+
+[node name="GUI" parent="." instance=ExtResource( 7 )]
