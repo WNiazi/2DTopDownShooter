@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var player_detection_zone = $PlayerDetectionZone
-onready var patrol_timer = $PatrolTimer 
+onready var patrol_timer = $PatrolTimer
 
 enum State{ 
 	PATROL, 
@@ -21,9 +21,9 @@ var patrol_location_reached: bool= false
 var actor_velocity: Vector2 = Vector2.ZERO 
 
 
+
 func _ready() ->void: 
 	set_state(State.PATROL)
-
 
 
 func _physic_process(delta: float)->void: 
@@ -33,16 +33,15 @@ func _physic_process(delta: float)->void:
 				actor.move_and_slide(actor_velocity)
 				actor.rotate_toward (patrol_location)
 				if actor.global_position.distance_to(patrol_location) < 5:  
-					patrol_location_reached=true 
+					patrol_location_reached = true 
 					actor_velocity = Vector2.ZERO  
 					patrol_timer.start() 
 				
-				
 		State.ENGAGE: 
 			if player != null and weapon != null:
-				var angle_to_player = actor.global_position.direction_to(player.global_position).angle()
 				actor.rotate_toward (player.global_position) 
-				if abs(actor.rotation - angle_to_player) <0.1: 
+				var angle_to_player = actor.global_position.direction_to(player.global_position).angle()
+				if abs(actor.rotation - angle_to_player) < 0.1: 
 					weapon.shoot()  
 			else:
 				print("In the engaged state but no weapon/player")
@@ -51,7 +50,7 @@ func _physic_process(delta: float)->void:
 			
 			
 
-func initalize(actor, weapon):
+func initalize(actor, weapon:Weapon):
 	self.actor = actor
 	self.weapon = weapon 
 	
@@ -61,8 +60,7 @@ func initalize(actor, weapon):
 func set_state (new_state: int): 
 	if new_state == current_state: 
 		return 
-		
-		
+
 	if new_state == State.PATROL:
 		origin = global_position  
 		patrol_timer.start() 
@@ -75,18 +73,6 @@ func set_state (new_state: int):
 func handle_reload(): 
 	weapon.start_reload() 
 	
-	
-func on_PlayerDetectionZone_body_entered (body: Node)-> void: 
-	if body.is_in_group("player"):
-		set_state(State.ENGAGE)
-		player = body 
-
-
-func _on_PlayerDetectionZone_body_exited(body) -> void:
-	if player and body == player:
-		set_state(State.PATROL)
-		player = null 
-
 
 func _on_PatrolTimer_timeout() -> void:
 	var patrol_range = 50 
@@ -96,4 +82,13 @@ func _on_PatrolTimer_timeout() -> void:
 	patrol_location_reached = false 
 	actor_velocity = actor.velocity_toward(patrol_location) 
 	
-	
+
+func _on_PlayerDetectionZone_body_entered(body: Node)-> void:
+	if body.is_in_group("player"):
+		set_state(State.ENGAGE)
+		player = body 
+		
+func _on_PlayerDetectionZone_body_exited(body: Node) -> void:
+	if player and body == player:
+		set_state(State.PATROL)
+		player = null

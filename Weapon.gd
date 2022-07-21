@@ -6,7 +6,7 @@ signal weapon_out_of_ammo
 
 export (PackedScene) var Bullet
 
-var max_ammo: int =10 
+var max_ammo: int = 30
 var current_ammo: int = max_ammo   
 
 
@@ -35,5 +35,6 @@ func shoot ():
 		GlobalSignals.emit_signal("bullet_fired", bullet_instance, end_of_gun.global_position, direction)
 		animation_player.play("muzzle_flash")
 		current_ammo -= 1
-	elif current_ammo = 0: 
-		emit_signal("weapon_out_of_ammo")
+		if current_ammo == 0:
+			emit_signal("weapon_out_of_ammo")
+

@@ -21,4 +21,4 @@ func rotate_toward (location: Vector2):
 func velocity_toward (location: Vector2) -> Vector2: 
 	return global_position.direction_to(location) * speed
 	
-				
+

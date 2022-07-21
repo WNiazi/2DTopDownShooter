@@ -34,7 +34,7 @@ func _unhandled_input(event: InputEvent) ->void:
 		weapon.start_reload()
 	
 	
-func reload () : 
+func reload (): 
 	weapon.start_reload()
 	
 	
@@ -42,7 +42,3 @@ func handle_hit():
 	health_stat.health -= 20
 	print("player hit", health_stat.health)
 	
-
-
-
-
