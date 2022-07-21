@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Player
 
+signal died 
 
 export (int) var speed =100 
 
