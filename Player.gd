@@ -29,17 +29,9 @@ func _physics_process(delta: float) -> void:
 	
 	look_at(get_global_mouse_position())
 
-func _unhandled_input(event: InputEvent) ->void: 
-	if event.is_action_released ("shoot"):
-		weapon.shoot()
-	elif event.is_action_released ("reload"):
-		weapon.start_reload()
+
 	
-	
-func reload (): 
-	weapon.start_reload()
-	
-	
+
 func handle_hit():
 	health_stat.health -= 20
 	emit_signal ("player_health_changed", health_stat.health)

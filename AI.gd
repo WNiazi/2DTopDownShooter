@@ -50,7 +50,7 @@ func _physic_process(delta: float)->void:
 			
 			
 
-func initalize(actor, weapon:Weapon):
+func initalize(actor:KinematicBody2D, weapon:Weapon):
 	self.actor = actor
 	self.weapon = weapon 
 	
