@@ -3,7 +3,7 @@ extends Node2D
 onready var player_detection_zone = $PlayerDetectionZone
 onready var patrol_timer = $PatrolTimer
 
-enum State{ 
+enum State { 
 	PATROL, 
 	ENGAGE
 }
@@ -40,8 +40,8 @@ func _physic_process(delta: float)->void:
 		State.ENGAGE: 
 			if player != null and weapon != null:
 				actor.rotate_toward (player.global_position) 
-				var angle_to_player = actor.global_position.direction_to(player.global_position).angle()
-				if abs(actor.rotation - angle_to_player) < 0.1: 
+				#var angle_to_player = actor.global_position.direction_to(player.global_position).angle()
+				if abs(actor.global_postion.angle_to(player.global_position) < 0.1): 
 					weapon.shoot()  
 			else:
 				print("In the engaged state but no weapon/player")

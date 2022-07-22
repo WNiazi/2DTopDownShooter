@@ -4,10 +4,11 @@ onready var health_stat = $Health
 onready var ai = $AI
 onready var weapon = $Weapon 
 
-export(int) var speed =100 
+export(int) var speed =150 
 
 func _ready()->void: 
 	ai.initalize(self, weapon)
+#	weapon.intialize (player)
 
 
 func handle_hit(): 
@@ -16,7 +17,7 @@ func handle_hit():
 		queue_free() 
 
 func rotate_toward (location: Vector2): 
-	rotation= lerp (rotation, global_position.direction_to(location).angle(), 0.1)
+	rotation= lerp_angle (rotation, global_position.direction_to(location).angle(), 0.1)
 
 func velocity_toward (location: Vector2) -> Vector2: 
 	return global_position.direction_to(location) * speed

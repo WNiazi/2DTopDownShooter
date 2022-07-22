@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+func _ready()->void: 
+	get_tree().paused =true 
+
 
 func _on_ContinueButton_pressed() ->void:
 	get_tree().pause =false  

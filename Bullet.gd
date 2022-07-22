@@ -22,9 +22,13 @@ func _physics_process(delta: float) -> void:
 		global_position += velocity 
 
 
-func set_direction(value):
-	direction = value
-	rotation += value.angle()
+func set_direction(direction:Vector2):
+	self.direction =direction
+	rotation +=direction.angle() 
+
+#func set_direction(value):
+	#direction = value
+	#rotation += value.angle()
 
 
 func _on_KillTimer_timeout():
@@ -33,5 +37,6 @@ func _on_KillTimer_timeout():
 
 func _on_Bullet_body_entered(body: Node) ->void: 
 	if body.has_method("handle_hit"):
+		GlobalSignals.emit_signal("bullet_impacted", global_position, direction)
 		body.handle_hit()
 	queue_free() 

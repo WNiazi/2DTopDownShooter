@@ -1,14 +1,15 @@
 extends Node2D
 
-const Player =preload ("res://Player.tscn")
-const GameOverScreen =preload ("res://GameOverScreen.tscn")
-const PauseScreen =preload ("res://PauseScreen.tscn")
+const Player = preload("res://Player.tscn")
+const GameOverScreen = preload("res://GameOverScreen.tscn")
+const PauseScreen = preload("res://PauseScreen.tscn")
 
 
 onready var bullet_manager =$BulletManager 
 onready var player: Player =$Player 
 #onready var camera=$Player/Camera2D
 onready var gui =$GUI
+onready var ground =$Ground
 
 
 
@@ -38,6 +39,8 @@ func spawn_player():
 	
 	
 #func _unhandled_input(event: InputEvent)->void: 
-	#if event.is_action_pressured("pause") 
+	#if event.is_action_pressed("pause"): 
+		#var pause_menu =PauseScreen.instance()
+		#add_child(pause_menu) 
 	
 

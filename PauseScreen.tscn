@@ -9,6 +9,7 @@ bg_color = Color( 0.027451, 0.027451, 0.027451, 0.129412 )
 
 [node name="PauseScreen" type="CanvasLayer"]
 pause_mode = 2
+layer = 2
 script = ExtResource( 3 )
 
 [node name="Overlay" type="PanelContainer" parent="."]
