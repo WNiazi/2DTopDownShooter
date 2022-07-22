@@ -1,11 +1,9 @@
 extends CanvasLayer
 
 
-
-
 func _on_StartButton_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://Main.tscn")
 
 
 func _on_QuitButton_pressed():
-	pass # Replace with function body.
+	get_tree().quit()

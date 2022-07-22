@@ -47,23 +47,34 @@ align = 1
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/Rows"]
 margin_top = 164.0
 margin_right = 924.0
-margin_bottom = 310.0
+margin_bottom = 403.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Rows/CenterContainer"]
-margin_left = 392.0
-margin_right = 532.0
-margin_bottom = 146.0
+margin_left = 360.0
+margin_right = 563.0
+margin_bottom = 239.0
 custom_constants/separation = 40
 
 [node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
-margin_right = 140.0
+margin_right = 203.0
 margin_bottom = 53.0
 custom_fonts/font = ExtResource( 1 )
 text = " Restart "
 
-[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
 margin_top = 93.0
-margin_right = 140.0
+margin_right = 203.0
 margin_bottom = 146.0
 custom_fonts/font = ExtResource( 1 )
+text = " Main Menu "
+
+[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+margin_top = 186.0
+margin_right = 203.0
+margin_bottom = 239.0
+custom_fonts/font = ExtResource( 1 )
 text = " Quit"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

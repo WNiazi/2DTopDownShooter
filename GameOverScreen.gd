@@ -12,3 +12,7 @@ func _on_QuitButton_pressed() ->void:
 	get_tree().quit()
 	
 	#have to get a way to die and sent it over to gameoverscreen 
+
+
+func _on_MainMenuButton_pressed():
+	 get_tree().change_scene("res://Menu.tscn")
