@@ -11,15 +11,16 @@ var player: Player
 func set_player(player: Player): 
 	self.player = player 
 	#this will get a new player when player dies 
-	#call the functions below
 	set_new_health_value(player.health_stat.health)
-	set_current_ammo (player.weapon.current_ammo)
-	set_max_ammo(player.weapon.max_ammo)
-	
 	player.connect("player_health_changed", self, "set_new_health_value") #this will update health bar
-	player.weapon.connect("weapon_ammo_changed", self, "set_current_ammo") 
-	#player current_ammo 
-	#max ammo shouldn't change   (this is for switching weapons) 
+	set_weapon(player.weapon_manager.get_current_weapon())
+	player.weapon_manager.connect ("weapon_changed", self, "set_weapon")
+
+func set_weapon ( weapon:Weapon):
+	set_current_ammo(weapon.current_ammo)
+	set_max_ammo (weapon.max_ammo)
+	if weapon.is_connected("weapon_ammo_changed", self, "set_current_name"):
+		weapon.connect ("weapon_ammo_changed", self, "set_current_ammo")
 	
 func set_new_health_value(new_health: int): 
 	var original_color =Color("#1b310c")

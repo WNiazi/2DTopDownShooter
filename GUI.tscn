@@ -69,6 +69,8 @@ custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 value = 50.0
 
+[node name="HealthTween" type="Tween" parent="MarginContainer/Row/BottomRow/HealthBar"]
+
 [node name="AmmoInfo" type="HBoxContainer" parent="MarginContainer/Row/BottomRow"]
 margin_left = 154.0
 margin_right = 984.0

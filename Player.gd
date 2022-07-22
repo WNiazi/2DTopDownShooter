@@ -8,8 +8,11 @@ export (int) var speed =100
 
 
 onready var health_stat = $Health
-onready var weapon: Weapon = $Weapon
+onready var weapon_manager =$WeaponManager
 
+#func _ready () ->void: 
+#		weapon_manager.initialize(player)
+		
 
 
 func _physics_process(delta: float) -> void:
@@ -28,9 +31,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide(movement_direction * speed )
 	
 	look_at(get_global_mouse_position())
-
-
-	
 
 func handle_hit():
 	health_stat.health -= 20
