@@ -35,5 +35,4 @@ max_ammo = 25
 
 [node name="SubmachineGun" parent="WeaponManager" instance=ExtResource( 6 )]
 position = Vector2( 4, 13 )
-max_ammo = 100
 semi_auto = false
