@@ -12,18 +12,17 @@ onready var gui =$GUI
 onready var ground =$Ground
 
 
-
 func _ready() -> void: 
 	randomize() 
 	GlobalSignals.connect("bullet_fired", bullet_manager, "handle_bullet_spawned")
 	
-	spawn_player() 
+#	spawn_player() 
 
-func spawn_player(): 
-	var player =Player.instance ()
-	add_child(player)
-	player.connect ("died", self, "spawn_player")
-	gui.set_player(player)
+#func spawn_player(): 
+#	var player =Player.instance ()
+#	add_child(player)
+#	player.connect ("died", self, "spawn_player")
+#	gui.set_player(player)
 	
 #func handle_player_win(): 
 	#var game_over =GamerOverScreen.instance()
