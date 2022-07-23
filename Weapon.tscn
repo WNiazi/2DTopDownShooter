@@ -80,6 +80,7 @@ position = Vector2( 24, 0 )
 health = 200
 
 [node name="MuzzleFlash" type="Sprite" parent="."]
+visible = false
 position = Vector2( 40, 0 )
 rotation = -1.5708
 scale = Vector2( 0.2, 1.2 )

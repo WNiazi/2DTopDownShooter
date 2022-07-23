@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/PNG/manBlue_hold.png" type="Texture" id=1]
+[ext_resource path="res://assets/manBlue_hold.png" type="Texture" id=1]
 [ext_resource path="res://Health.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemy.gd" type="Script" id=3]
 [ext_resource path="res://Weapon.tscn" type="PackedScene" id=4]

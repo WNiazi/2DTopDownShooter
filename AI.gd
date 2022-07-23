@@ -1,5 +1,7 @@
 extends Node2D
 
+signal state_changed(new_state)
+
 onready var player_detection_zone = $PlayerDetectionZone
 onready var patrol_timer = $PatrolTimer
 
@@ -75,12 +77,12 @@ func handle_reload():
 	
 
 func _on_PatrolTimer_timeout() -> void:
-	var patrol_range = 50 
+	var patrol_range = 150 
 	var random_x = rand_range (-patrol_range, patrol_range) 
 	var random_y = rand_range(-patrol_range, patrol_range) 
 	patrol_location = Vector2 (random_x, random_y) + origin 
-	patrol_location_reached = false 
-	actor_velocity = actor.velocity_toward(patrol_location) 
+	#patrol_location_reached = false 
+	#actor_velocity = actor.velocity_toward(patrol_location) 
 	
 
 func _on_PlayerDetectionZone_body_entered(body: Node)-> void:

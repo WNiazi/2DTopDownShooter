@@ -1,4 +1,5 @@
-extends Particles2D
+extends CPUParticles2D
+
 
 
 onready var timer =$Timer 

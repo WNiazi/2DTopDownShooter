@@ -11,5 +11,5 @@ func handle_bullet_impacted(positon:Vector2, direction:Vector2):
 	add_child(impact) 
 	impact.global_position =position 
 	impact.global_rotation = direction.angle() 
-	impact.start_emitting 
-	 
+	impact.start_emitting() 
+	
