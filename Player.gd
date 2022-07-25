@@ -6,12 +6,13 @@ signal died
 
 export (int) var speed =150 
 
-
+onready var collision_shape =$CollisionShape2D
 onready var health_stat = $Health
 onready var weapon_manager =$WeaponManager
+#onready var camera_transform =$CameraTransform
 
 #func _ready () ->void: 
-#		weapon_manager.initialize(player)
+#		weapon_manager.initialize(player.player)
 		
 
 
@@ -31,6 +32,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide(movement_direction * speed )
 	
 	look_at(get_global_mouse_position())
+
+#func set_camera_transform(camera_path:NodePath): 
+	#camera_transform.remote_path=camera_path
+
 
 func handle_hit():
 	health_stat.health -= 20

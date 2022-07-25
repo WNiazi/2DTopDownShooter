@@ -11,10 +11,10 @@ enum State {
 }
 
 
-var current_state = -1 setget set_state
+var current_state: int  = State.PATROL setget set_state
 var player: Player = null 
-var weapon = null 
-var actor: KinematicBody2D = null 
+var weapon: Weapon = null 
+var actor = null 
 
 #PATROL STATE 
 var origin : Vector2 = Vector2.ZERO
@@ -41,10 +41,11 @@ func _physic_process(delta: float)->void:
 				
 		State.ENGAGE: 
 			if player != null and weapon != null:
-				actor.rotate_toward (player.global_position) 
+				actor.rotation = lerp(actor.rotation, actor.global_position.direction_to(player.global_position).angle(), 0.1)
+				#actor.rotate_toward (player.global_position) 
 				#var angle_to_player = actor.global_position.direction_to(player.global_position).angle()
-				if abs(actor.global_postion.angle_to(player.global_position) < 0.1): 
-					weapon.shoot()  
+				#if abs(actor.global_postion.angle_to(player.global_position) < 0.1): 
+				weapon.shoot()  
 			else:
 				print("In the engaged state but no weapon/player")
 		_:
@@ -52,10 +53,11 @@ func _physic_process(delta: float)->void:
 			
 			
 
-func initalize(actor:KinematicBody2D, weapon:Weapon):
+func initalize(actor:KinematicBody2D, weapon: Weapon):
 	self.actor = actor
 	self.weapon = weapon 
-	
+	#above is ai connection with weapon
+	#anything actor which needs this 
 	weapon.connect("weapon_out_of_ammo", self, "handle_reload")
 	
 	

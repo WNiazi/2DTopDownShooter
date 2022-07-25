@@ -19,7 +19,7 @@ func set_player(player: Player):
 func set_weapon ( weapon:Weapon):
 	set_current_ammo(weapon.current_ammo)
 	set_max_ammo (weapon.max_ammo)
-	if weapon.is_connected("weapon_ammo_changed", self, "set_current_name"):
+	if not weapon.is_connected("weapon_ammo_changed", self, "set_current_ammo"):
 		weapon.connect ("weapon_ammo_changed", self, "set_current_ammo")
 	
 func set_new_health_value(new_health: int): 

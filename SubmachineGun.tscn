@@ -7,11 +7,10 @@ load_path = "res://.import/weapon_machine.png-2cdd309ea8bf3efe9a21e78e5bda0d7d.s
 
 [node name="SubmachineGun" instance=ExtResource( 1 )]
 
-[node name="MuzzleFlash" parent="." index="4"]
-visible = false
-position = Vector2( 41, 0 )
-
-[node name="Sprite" parent="." index="5"]
+[node name="Sprite" parent="." index="0"]
 position = Vector2( 0, 0 )
 scale = Vector2( 1.0197, 1.2 )
 texture = SubResource( 1 )
+
+[node name="MuzzleFlash" parent="." index="3"]
+position = Vector2( 41, 0 )

@@ -5,12 +5,9 @@
 
 [node name="Pistol" instance=ExtResource( 1 )]
 
-[node name="GunDirection" parent="." index="1"]
-position = Vector2( 41, -1 )
-
-[node name="MuzzleFlash" parent="." index="4"]
-position = Vector2( 46, -1 )
-
-[node name="Sprite" parent="." index="5"]
+[node name="Sprite" parent="." index="0"]
 scale = Vector2( 1.6201, 1.2 )
 texture = ExtResource( 2 )
+
+[node name="MuzzleFlash" parent="." index="3"]
+position = Vector2( 46, -1 )

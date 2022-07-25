@@ -11,7 +11,7 @@
 extents = Vector2( 19.5, 22.5 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
-position = Vector2( 34, 16 )
+position = Vector2( 19, 8 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -21,7 +21,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 48, 44 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -11.5, 1.5 )
+position = Vector2( -13, 0 )
 shape = SubResource( 1 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
