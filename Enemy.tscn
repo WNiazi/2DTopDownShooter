@@ -12,8 +12,11 @@ extents = Vector2( 14, 21 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 150.0
 
-[node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
+[node name="Actor" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

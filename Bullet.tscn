@@ -4,7 +4,7 @@
 [ext_resource path="res://Bullet.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 2, 0.999993 )
+extents = Vector2( 2, 1 )
 
 [node name="Bullet" type="Area2D"]
 rotation = 1.5708
@@ -12,7 +12,6 @@ script = ExtResource( 2 )
 speed = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 5.96046e-08, -2.15768e-13 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -23,7 +22,7 @@ region_enabled = true
 region_rect = Rect2( 194, 46, 4, 10 )
 
 [node name="KillTimer" type="Timer" parent="."]
-wait_time = 50.0
+wait_time = 0.7
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

@@ -12,7 +12,7 @@ onready var weapon_manager =$WeaponManager
 #onready var camera_transform =$CameraTransform
 
 #func _ready () ->void: 
-#		weapon_manager.initialize(player.player)
+#		weapon_manager.initialize(self.player)
 		
 
 

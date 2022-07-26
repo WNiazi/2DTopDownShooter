@@ -3,7 +3,7 @@ extends Node2D
 onready var current_weapon =$Pistol 
 onready var weapon: Weapon = $Weapon
 
-signal weapon_changed 
+signal weapon_changed (new_weapon)
 
 var weapons: Array = [] 
 
@@ -20,10 +20,11 @@ func _process(delta: float)->void:
 		current_weapon.shoot() 
 		
 		
-#func initialize(player: int) ->void: 
-#	for weapon in weapons: 
-#		weapon.initialize(player)
-#		
+func initialize(player: int) ->void: 
+	for weapon in weapons: 
+		weapon.initialize(player)
+		
+
 func get_current_weapon()->Weapon:
 	return current_weapon
 	
