@@ -3,7 +3,6 @@ class_name Weapon
 
 signal weapon_ammo_changed (new_ammo_count)
 signal weapon_out_of_ammo
-#signal player_fired_bullet (bullet, position, direction)
 
 
 export (PackedScene) var Bullet

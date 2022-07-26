@@ -18,6 +18,7 @@ var current_state:int = -1 setget set_state
 var actor: Actor =null 
 var target: KinematicBody2D =null 
 var weapon: Weapon =null 
+#player to target 
 
 
 #PATROL STATE 
@@ -31,25 +32,21 @@ func _ready()-> void:
 	#path_line.visible =should_draw_path_line 
 	
 func _physic_process(delta: float)->void:
-	#path_line.global_rotation =0  
 	match current_state: 
 		State.PATROL: 
 			if not patrol_location_reached: 
-				#var path=pathfinding.get_new_path(global_position, patrol_location)
-				#if path.size()>1: 
-				actor_velocity=actor.velocity_toward(patrol_location)
+				actor.move_and_slide(actor_velocity)
 				actor.rotate_toward(patrol_location)
-				actor.move_slide(actor_velocity)
-				#set_path_line(path)
-			else: 
-				patrol_location_reached =true 
-				actor_velocity =Vector2.ZERO
-				patrol_timer.start() 
-				#path_line.clear_points() 
+				if actor.global_position.distance_to(patrol_location) <5: 
+					patrol_location_reached =true 
+					actor_velocity=Vector2.ZERO
+					patrol_timer.start() 
+		
 		State.ENGAGE:
 			if target !=null and weapon !=null: 
 				actor.rotate_toward(target.global_position)
-				if abs(actor.global_position.angle_to(target.global_position))<0.1:
+				var angle_to_player =actor.global_position.direction_to(target.global_position)
+				if abs(actor.rotation -angle_to_player)<0.1:
 					weapon.shoot() 
 			else: 
 				print ("In engage state but no weapon /target")
@@ -71,16 +68,19 @@ func set_state (new_state: int):
 		origin =global_position 
 		patrol_timer.start() 
 		patrol_location_reached =true 
+		
+	#current_state =new states 
+	#emit_signal("state_changed", current_state)
 	elif new_state ==State.ENGAGE: 
 		return
 
 func _on_PatrolTimer_timeout() -> void:
-	var patrol_range = 150 
+	var patrol_range = 50 
 	var random_x = rand_range (-patrol_range, patrol_range) 
 	var random_y = rand_range(-patrol_range, patrol_range) 
 	patrol_location = Vector2 (random_x, random_y) + origin 
 	patrol_location_reached = false 
-	#actor_velocity = actor.velocity_toward(patrol_location) 
+	actor_velocity = actor.velocity_toward(patrol_location) 
 	
 
 func _on_PlayerDetectionZone_body_entered(body: Node)-> void:

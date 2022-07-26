@@ -14,7 +14,7 @@ export(int) var speed =150
 func _ready()->void: 
 	ai.initalize(self, weapon)
 	#notes: this connects the ai with weapon (here ai doesn't need a weapon) 
-	weapon.initalize(Player)
+	#weapon.initalize(Player)
 
 
 func handle_hit(): 
@@ -30,8 +30,8 @@ func velocity_toward(location: Vector2) -> Vector2:
 	return global_position.direction_to(location) * speed
 
 
-func has_reached_position(location: Vector2) -> bool:
-	return global_position.distance_to(location) < 5
+#func has_reached_position(location: Vector2) -> bool:
+	#return global_position.distance_to(location) < 5
 
 
 func die():
