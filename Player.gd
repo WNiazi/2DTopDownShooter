@@ -4,16 +4,18 @@ class_name Player
 signal player_health_changed(new_health) 
 signal died 
 
-export (int) var speed =150 
+export (int) var speed = 100 
 
-onready var collision_shape =$CollisionShape2D
+onready var collision_shape = $CollisionShape2D
 onready var health_stat = $Health
-onready var weapon_manager =$WeaponManager
+onready var weapon_manager = $WeaponManager
+onready var weapon =$Weapon 
 #onready var camera_transform =$CameraTransform
 
-#func _ready () ->void: 
-#		weapon_manager.initialize(self.player)
-		
+#func _ready() ->void: 
+	#pass
+
+#	weapon_manager.initialize(player) check 10 
 
 
 func _physics_process(delta: float) -> void:

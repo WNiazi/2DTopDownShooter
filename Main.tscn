@@ -352,6 +352,8 @@ position = Vector2( 0, 2 )
 current = true
 limit_left = 0
 limit_top = 0
+limit_smoothed = true
+smoothing_enabled = true
 
 [node name="Actor" parent="." instance=ExtResource( 1 )]
 position = Vector2( 245, 79 )

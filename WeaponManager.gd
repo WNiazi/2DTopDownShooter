@@ -23,7 +23,7 @@ func _process(delta: float)->void:
 func initialize(player: int) ->void: 
 	for weapon in weapons: 
 		weapon.initialize(player)
-		
+
 
 func get_current_weapon()->Weapon:
 	return current_weapon

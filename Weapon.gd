@@ -14,9 +14,9 @@ export (bool) var semi_auto: bool = true
 var current_ammo: int = max_ammo setget set_current_ammo
 
 
-onready var end_of_gun =$EndOfGun 
-onready var animation_player =$AnimationPlayer
-onready var muzzle_flash =$MuzzleFlash
+onready var end_of_gun = $EndOfGun 
+onready var animation_player = $AnimationPlayer
+onready var muzzle_flash = $MuzzleFlash
 
 
 func _ready() ->void: 
@@ -44,7 +44,7 @@ func set_current_ammo(new_ammo: int) :
 	
 	
 func shoot (): 
-	if current_ammo!= 0 and Bullet !=null: 
+	if current_ammo != 0 and Bullet != null: 
 		var bullet_instance = Bullet.instance()
 		var direction = (end_of_gun.global_position -global_position).normalized()
 		GlobalSignals.emit_signal("bullet_fired", bullet_instance, end_of_gun.global_position, direction)
