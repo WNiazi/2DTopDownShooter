@@ -57,6 +57,7 @@ config/icon="res://assets/icon.png"
 [autoload]
 
 GlobalSignals="*res://globals/GlobalSignals.gd"
+PlayerScore="*res://PlayerScore.tscn"
 
 [display]
 

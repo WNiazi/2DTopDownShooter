@@ -10,6 +10,7 @@ onready var collision_shape = $CollisionShape2D
 onready var health_stat = $Health
 onready var weapon_manager = $WeaponManager
 onready var weapon =$Weapon 
+
 #onready var camera_transform =$CameraTransform
 
 #func _ready() ->void: 
@@ -42,10 +43,13 @@ func _physics_process(delta: float) -> void:
 func handle_hit():
 	health_stat.health -= 20
 	emit_signal ("player_health_changed", health_stat.health)
-	if health_stat.health<=0: 
-		die() 
+	if health_stat.health <= 0 and PlayerScore.lives <= 0:
+		die()
+		#do you want three deaths total? 
 		
 		
 func die(): 
 	emit_signal ("died")
-	queue_free () 
+	if PlayerScore.lives !=0:
+		PlayerScore.lives -=1 
+		queue_free () 

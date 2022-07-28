@@ -10,6 +10,7 @@ onready var weapon: Weapon = $Weapon
 onready var collison_shape =$CollisionShape2D
 
 export(int) var speed = 100 
+export var score =100
 
 func _ready() -> void: 
 	ai.initialize(self, weapon) 
@@ -20,6 +21,7 @@ func handle_hit():
 	health_stat.health-=20 
 	if health_stat.health <=0: 
 		queue_free() 
+		#we can have a respawn timer for the enemy and start it.  prior to it should have locations for respawning
 
 func rotate_toward(location: Vector2):
 	rotation = lerp_angle(rotation, global_position.direction_to(location).angle(), 0.1)
@@ -34,4 +36,5 @@ func has_reached_position(location: Vector2) -> bool:
 
 func die():
 	emit_signal("died")
+	PlayerScore.score +=score
 	queue_free()
