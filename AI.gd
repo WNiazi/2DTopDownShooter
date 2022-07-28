@@ -73,9 +73,6 @@ func set_state (new_state: int):
 		patrol_timer.start() 
 		patrol_location_reached = true  #because we are not moving
 		
-	#elif new_state == State.ENGAGE: 
-		#return
-		
 	current_state = new_state
 	emit_signal("state_changed", current_state)
 	

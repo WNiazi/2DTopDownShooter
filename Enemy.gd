@@ -3,6 +3,8 @@ class_name Actor
 
 signal died 
 
+#onready var player_new_score = "/root/PlayerScore"
+#onready var player_new_lives ="/root/PlayerScore"
 onready var health_stat = $Health
 onready var ai = $AI
 onready var weapon: Weapon = $Weapon 
@@ -10,7 +12,8 @@ onready var weapon: Weapon = $Weapon
 onready var collison_shape =$CollisionShape2D
 
 export(int) var speed = 100 
-export var score =100
+export var score: = 5
+
 
 func _ready() -> void: 
 	ai.initialize(self, weapon) 
@@ -19,7 +22,9 @@ func _ready() -> void:
 
 func handle_hit(): 
 	health_stat.health-=20 
+	PlayerScore.score += score 
 	if health_stat.health <=0: 
+		
 		queue_free() 
 		#we can have a respawn timer for the enemy and start it.  prior to it should have locations for respawning
 
@@ -36,5 +41,4 @@ func has_reached_position(location: Vector2) -> bool:
 
 func die():
 	emit_signal("died")
-	PlayerScore.score +=score
 	queue_free()

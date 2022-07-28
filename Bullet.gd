@@ -27,10 +27,6 @@ func set_direction(direction:Vector2):
 	self.direction = direction
 	rotation +=direction.angle() 
 
-#func set_direction(value):
-	#direction = value
-	#rotation += value.angle()
-
 
 func _on_KillTimer_timeout()->void:
 	queue_free()

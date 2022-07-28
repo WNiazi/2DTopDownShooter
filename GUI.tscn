@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/pttext36.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Score.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=3]
+size = 22
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.105882, 0.192157, 0.0470588, 1 )
@@ -38,6 +45,7 @@ margin_right = 1004.0
 margin_bottom = 580.0
 grow_horizontal = 0
 mouse_filter = 2
+custom_constants/separation = 1
 
 [node name="TopRow" type="HBoxContainer" parent="MarginContainer/Row"]
 margin_right = 984.0
@@ -45,10 +53,20 @@ margin_bottom = 55.0
 mouse_filter = 2
 size_flags_vertical = 3
 
+[node name="Score" type="Label" parent="MarginContainer/Row/TopRow"]
+margin_top = 4.0
+margin_right = 112.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 0, 10 )
+theme = SubResource( 4 )
+custom_fonts/font = ExtResource( 2 )
+text = "Score : "
+script = ExtResource( 3 )
+
 [node name="MiddleRow" type="HBoxContainer" parent="MarginContainer/Row"]
-margin_top = 59.0
+margin_top = 56.0
 margin_right = 984.0
-margin_bottom = 500.0
+margin_bottom = 503.0
 mouse_filter = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0

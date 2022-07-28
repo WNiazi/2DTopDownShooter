@@ -31,7 +31,7 @@ func start_reload():
 func _stop_reload(): 
 	current_ammo = max_ammo 
 	emit_signal("weapon_ammo_changed", current_ammo)
-	#add to animaltion_finished under animation player+> node ; if this happens then call on "reload"
+	#add to animation_finished under animation player+> node ; if this happens then call on "reload"
 
 func set_current_ammo(new_ammo: int) : 
 	var actual_ammo =clamp (new_ammo, 0, max_ammo)
@@ -50,6 +50,7 @@ func shoot ():
 		GlobalSignals.emit_signal("bullet_fired", bullet_instance, end_of_gun.global_position, direction)
 		animation_player.play("muzzle_flash")
 		set_current_ammo(current_ammo - 1)
+		PlayerScore.score +=5
 
 		
 

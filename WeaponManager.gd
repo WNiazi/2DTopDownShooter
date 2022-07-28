@@ -46,6 +46,8 @@ func _unhandled_input(event: InputEvent) ->void:
 		switch_weapon(weapons[0]) 
 	elif event.is_action_released("weapon2"):
 		switch_weapon(weapons[1]) 
+#	elif event.is_action_released("weapon3"): 
+#		switch_weapon(weapons[2])
 		
 		
 func reload (): 

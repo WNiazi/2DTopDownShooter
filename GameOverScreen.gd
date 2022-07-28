@@ -1,6 +1,17 @@
 extends CanvasLayer
 
+onready var title =$PanelContainer/MarginContainer/Rows/Title
+
 #make sure to attach to the right one
+func _ready()->void: 
+	pass 
+	
+func set_title (win: bool): 
+	if win: 
+		title.text = "You Win!"
+	else: 
+		title.text ="You Lose!"
+	
 
 func _on_RestartButton_pressed() -> void: 
 	get_tree().paused =false 

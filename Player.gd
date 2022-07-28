@@ -2,6 +2,8 @@ extends KinematicBody2D
 class_name Player
 
 signal player_health_changed(new_health) 
+#signal player_score_changed (new_score)
+signal player_new_lives (new_lives)
 signal died 
 
 export (int) var speed = 100 
@@ -10,13 +12,6 @@ onready var collision_shape = $CollisionShape2D
 onready var health_stat = $Health
 onready var weapon_manager = $WeaponManager
 onready var weapon =$Weapon 
-
-#onready var camera_transform =$CameraTransform
-
-#func _ready() ->void: 
-	#pass
-
-#	weapon_manager.initialize(player) check 10 
 
 
 func _physics_process(delta: float) -> void:
@@ -42,14 +37,23 @@ func _physics_process(delta: float) -> void:
 
 func handle_hit():
 	health_stat.health -= 20
+	PlayerScore.score -= 1 
+	
 	emit_signal ("player_health_changed", health_stat.health)
+#	emit_signal ("player_score_changed", PlayerScore.score)
+#	emit_signal ("player_lives_changed", PlayerScore.lives)
 	if health_stat.health <= 0 and PlayerScore.lives <= 0:
 		die()
-		#do you want three deaths total? 
-		
+		#connect to game over
+	elif health_stat.health <=0: 
+		PlayerScore.lives -=1
+		die() 
+
 		
 func die(): 
 	emit_signal ("died")
-	if PlayerScore.lives !=0:
-		PlayerScore.lives -=1 
-		queue_free () 
+	PlayerScore.lives -= 1
+	if PlayerScore.lives == 3 : 
+		PlayerScore.emit_signal("player_lost")
+	queue_free () 
+#connect to gameover
