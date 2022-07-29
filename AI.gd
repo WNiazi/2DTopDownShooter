@@ -46,8 +46,6 @@ func _physics_process(delta: float) -> void:
 		State.ENGAGE:
 			if target != null and weapon != null: 
 				actor.rotate_toward(target.global_position)
-				#var angle_to_target = actor.global_position.direction_to(target.global_position)
-				#if abs(actor.rotation - angle_to_target) < 0.1:
 				if abs(actor.global_position.angle_to(target.global_position)) <0.1: 
 					#above is causes the actor to wait till rotated fully before shooing
 					weapon.shoot() 

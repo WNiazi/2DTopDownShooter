@@ -3,8 +3,7 @@ class_name Actor
 
 signal died 
 
-#onready var player_new_score = "/root/PlayerScore"
-#onready var player_new_lives ="/root/PlayerScore"
+
 onready var health_stat = $Health
 onready var ai = $AI
 onready var weapon: Weapon = $Weapon 

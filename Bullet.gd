@@ -18,7 +18,6 @@ func _ready() ->void :
 func _physics_process(delta: float) -> void:
 	if direction != Vector2.ZERO:
 		var velocity = direction * speed
-		#translate(direction *speed *delta)
 
 		global_position += velocity 
 
