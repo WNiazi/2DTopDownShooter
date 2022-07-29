@@ -6,7 +6,7 @@ const PauseScreen = preload("res://PauseScreen.tscn")
 #const PlayerScore = preload ("res://PlayerScore.tscn")
 
 
-
+onready var forest_sound =$ForestSounds
 onready var bullet_manager = $BulletManager 
 onready var player: Player = $Player 
 onready var camera = $Player/Camera2D
@@ -15,6 +15,7 @@ onready var ground = $Ground
 
 
 func _ready() -> void: 
+	$ForestSounds.play() 
 	randomize() 
 	GlobalSignals.connect("bullet_fired", bullet_manager, "handle_bullet_spawned")
 #	PlayerScore.connect ("player_wins", self, "handle_player_wins")

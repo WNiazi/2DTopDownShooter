@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var health_stat =$Health 
+
 
 signal player_total_score 
 signal player_total_lives
@@ -29,9 +31,11 @@ func set_score(new_score: int):
 		
 func set_lives(new_lives: int): 
 	lives = clamp(new_lives, 0, 3) 
+	if health_stat.health == 0: 
+		lives +=1 
 	if lives >=3:  
 		emit_signal ("player_total_lives")
 
-func reset() -> void: 
-	score = 0 
-	lives = 3  
+#func reset() -> void: 
+#	score = 0 
+#	lives = 3  

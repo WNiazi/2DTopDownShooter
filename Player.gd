@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 
 func handle_hit():
 	health_stat.health -= 5
-	PlayerScore.score -= 5 
+	PlayerScore.score -= 0 
 	
 	emit_signal ("player_health_changed", health_stat.health)
 #	emit_signal ("player_score_changed", PlayerScore.score)
@@ -55,14 +55,18 @@ func handle_hit():
 func die(): 
 	emit_signal ("died")
 	PlayerScore.lives -= 1
+	GlobalSignals.enemy_killed() 
+	print("on player")
 	queue_free () 
 #connect to gameover
 
 
 func _on_PlayerScore_player_total_lives():
 	if player_total_lives == 3 : 
+		print ("on Player and settings")
 		queue_free()
 		
 func _on_PlayerScore_player_total_score():
 	if player_total_score == 100: 
+		print ("on placertotal score")
 		queue_free()
