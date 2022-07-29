@@ -10,7 +10,7 @@
 [ext_resource path="res://BulletImpact.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ImpactManger.gd" type="Script" id=9]
 [ext_resource path="res://PlayerScore.tscn" type="PackedScene" id=10]
-[ext_resource path="res://globals/forest (1).ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/forest (1).ogg" type="AudioStream" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Grass.png "
