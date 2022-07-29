@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -9,9 +9,7 @@
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://BulletImpact.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ImpactManger.gd" type="Script" id=9]
-[ext_resource path="res://Enemy2.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/kenney_topdowntanksredux/Tilesheet/hitman1_machine.png" type="Texture" id=11]
-[ext_resource path="res://Zombie.gd" type="Script" id=12]
+[ext_resource path="res://PlayerScore.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Grass.png "
@@ -334,9 +332,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 7/shapes = [  ]
 7/z_index = 0
 
-[sub_resource type="CircleShape2D" id=13]
-radius = 29.1548
-
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -362,7 +357,7 @@ limit_smoothed = true
 smoothing_enabled = true
 
 [node name="Actor" parent="." instance=ExtResource( 1 )]
-position = Vector2( 245, 79 )
+position = Vector2( 286, 38 )
 collision_layer = 0
 collision_mask = 7
 
@@ -379,14 +374,6 @@ position = Vector2( 1, 2 )
 
 [node name="GUI" parent="." instance=ExtResource( 7 )]
 
-[node name="Zombie" type="KinematicBody2D" parent="."]
-motion/sync_to_physics = true
-script = ExtResource( 12 )
+[node name="PlayerScore" parent="." instance=ExtResource( 10 )]
 
-[node name="Zombie" parent="Zombie" instance=ExtResource( 10 )]
-texture = ExtResource( 11 )
-
-[node name="Area2D" type="Area2D" parent="Zombie"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Zombie/Area2D"]
-shape = SubResource( 13 )
+[connection signal="player_total_lives" from="PlayerScore" to="Player" method="_on_PlayerScore_player_total_lives"]

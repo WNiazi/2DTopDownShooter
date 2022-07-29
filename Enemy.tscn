@@ -36,7 +36,7 @@ position = Vector2( 8, 12 )
 [node name="AI" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
-[node name="PlayerDetectionZone" type="Area2D" parent="AI"]
+[node name="PlayerDetectionZone" type="Area2D" parent="AI" groups=["enemy"]]
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AI/PlayerDetectionZone"]

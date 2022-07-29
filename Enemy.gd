@@ -11,7 +11,7 @@ onready var weapon: Weapon = $Weapon
 onready var collison_shape =$CollisionShape2D
 
 export(int) var speed = 100 
-export var score: = 5
+#export var score: = 0
 
 
 func _ready() -> void: 
@@ -21,9 +21,9 @@ func _ready() -> void:
 
 func handle_hit(): 
 	health_stat.health-=20 
-	PlayerScore.score += score 
+#	PlayerScore.score += score 
 	if health_stat.health <=0: 
-		
+		PlayerScore.score = 5
 		queue_free() 
 		#we can have a respawn timer for the enemy and start it.  prior to it should have locations for respawning
 

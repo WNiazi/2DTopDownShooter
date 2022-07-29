@@ -50,3 +50,6 @@ texture = ExtResource( 9 )
 position = Vector2( 4, 13 )
 
 [node name="PlayerScore" parent="." instance=ExtResource( 8 )]
+
+[connection signal="player_total_lives" from="PlayerScore" to="." method="_on_PlayerScore_player_total_lives"]
+[connection signal="player_total_score" from="PlayerScore" to="." method="_on_PlayerScore_player_total_score"]
