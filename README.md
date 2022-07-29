@@ -45,7 +45,7 @@ _Further exploration objectives:_
 
 ## License <a id="license"></a>
 Copyright (c) 2022 _**Wajma Niazi**_
-Note Majority of the code was based on tutorials online, including the images and music 
+_Note:  Majority of the code was based on tutorials online, including the images and music._
 
 ## Contact <a id="contact"></a>
 Wajma Niazi [Email](mailto:w1niazi@gmail.com) • [LinkedIn](https://www.linkedin.com/in/wniazi/) • [GitHub](https://github.com/wniazi)
