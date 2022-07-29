@@ -1,6 +1,6 @@
 # 2DTopDownShooter
 
-# <p align="center"> ⚡ **Shoot Them Up** ⚡ </p>
+# <p align="center">  **Shoot Them Up**  </p>
 
 _July 31, 2022_
 
