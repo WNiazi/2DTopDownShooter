@@ -181,7 +181,6 @@ anims/reload = SubResource( 3 )
 wait_time = 0.7
 
 [node name="Silencer" type="Node2D" parent="WeaponManager"]
-visible = false
 position = Vector2( 26, 13 )
 script = ExtResource( 7 )
 Bullet = ExtResource( 10 )
@@ -212,7 +211,6 @@ anims/reload = SubResource( 5 )
 [node name="AttackCoolDown" type="Timer" parent="WeaponManager/Silencer"]
 
 [node name="SubmachineGun" type="Node2D" parent="WeaponManager"]
-visible = false
 position = Vector2( 89, 31 )
 script = ExtResource( 7 )
 Bullet = ExtResource( 10 )

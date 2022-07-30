@@ -6,7 +6,6 @@ export (int) var speed = 10
 
 
 onready var kill_timer =$KillTimer
-#var team: int = -1  (helps with friendly fire/avoiding)
 
 var direction:= Vector2.ZERO 
 

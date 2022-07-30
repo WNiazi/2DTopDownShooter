@@ -1,5 +1,5 @@
 extends KinematicBody2D
-class_name Actor
+class_name Actor 6
 
 
 signal died
@@ -31,7 +31,7 @@ func has_reached_position(location: Vector2) -> bool:
 
 
 func handle_hit():
-	health_stat.health -= 20
+	health_stat.health -= 10 
 	if health_stat.health <= 0:
 		die()
 

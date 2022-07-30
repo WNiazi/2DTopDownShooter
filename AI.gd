@@ -94,11 +94,11 @@ func _on_PatrolTimer_timeout() -> void:
 
 
 
-func _on_PlayerDetectionZone_body_entered(body: Node)->void:
+func _on_PlayerDetectionZone_body_entered(body: KinematicBody2D)->void:
 	set_state(State.ENGAGE)
 	target = body
 
-func _on_PlayerDetectionZone_body_exited(body: Node)->void:
+func _on_PlayerDetectionZone_body_exited(body: KinematicBody2D)->void:
 		if target and body == target:
 			set_state(State.PATROL)
 			target = null
