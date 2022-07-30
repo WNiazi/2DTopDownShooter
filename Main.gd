@@ -22,8 +22,9 @@ func _ready() -> void:
 #	PlayerScore.connect ("player_wins", self, "handle_player_wins")
 #	PlayerScore.connect("player_lost", self, "handle_player_lost")
 	
+
 	spawn_player() 
-	set_camera_limits() 
+	
 	#var emeny_respawns =$EnemyRespawnPoints 
 	#var player_respawns = $PlayerRespawnPoints
 

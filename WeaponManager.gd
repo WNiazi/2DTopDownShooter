@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var current_weapon =$Pistol 
-onready var weapon: Weapon = $Weapon
+onready var weapon:Weapon = $WeaponManger
 
 signal weapon_changed (new_weapon)
 
@@ -46,8 +46,8 @@ func _unhandled_input(event: InputEvent) ->void:
 		switch_weapon(weapons[0]) 
 	elif event.is_action_released("weapon2"):
 		switch_weapon(weapons[1]) 
-#	elif event.is_action_released("weapon3"): 
-#		switch_weapon(weapons[2])
+	elif event.is_action_released("weapon3"): 
+		switch_weapon(weapons[2])
 		
 		#from the AI 
 func reload (): 

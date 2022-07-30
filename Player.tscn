@@ -1,16 +1,136 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Health.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/kenney_topdowntanksredux/Tilesheet/robot1_hold.png" type="Texture" id=3]
 [ext_resource path="res://WeaponManager.gd" type="Script" id=4]
-[ext_resource path="res://Pistol.tscn" type="PackedScene" id=5]
-[ext_resource path="res://SubmachineGun.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Weapon.tscn" type="PackedScene" id=7]
-[ext_resource path="res://PlayerScore.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/kenney_topdowntanksredux/Tilesheet/weapon_machine.png" type="Texture" id=5]
+[ext_resource path="res://assets/kenney_topdowntanksredux/Tilesheet/weapon_gun.png" type="Texture" id=6]
+[ext_resource path="res://Weapon.gd" type="Script" id=7]
+[ext_resource path="res://assets/kenney_topdowntanksredux/Spritesheet/onlyObjects_default.png" type="Texture" id=9]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/kenney_topdowntanksredux/Tilesheet/weapon_silencer.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19.5, 22.5 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "muzzle_flash"
+length = 0.04
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("../MuzzleFlash:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.04 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../MuzzleFlash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0, 0.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_stop_reload"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "muzzle_flash"
+length = 0.04
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("../MuzzleFlash:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.04 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../MuzzleFlash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0, 0.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_stop_reload"
+} ]
+}
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 position = Vector2( 19, 8 )
@@ -29,17 +149,96 @@ shape = SubResource( 1 )
 [node name="WeaponManager" type="Node2D" parent="."]
 script = ExtResource( 4 )
 
-[node name="Pistol" parent="WeaponManager" instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 4, 14 )
+[node name="Pistol" type="Node2D" parent="WeaponManager"]
+position = Vector2( 26, 13 )
+script = ExtResource( 7 )
+Bullet = ExtResource( 10 )
 max_ammo = 25
 
-[node name="SubmachineGun" parent="WeaponManager" instance=ExtResource( 6 )]
+[node name="Sprite" type="Sprite" parent="WeaponManager/Pistol"]
+position = Vector2( 9.53674e-07, 0 )
+scale = Vector2( 1.6201, 1.2 )
+texture = ExtResource( 6 )
+
+[node name="EndOfGun" type="Position2D" parent="WeaponManager/Pistol"]
+position = Vector2( 15, 0 )
+
+[node name="MuzzleFlash" type="Sprite" parent="WeaponManager/Pistol"]
+position = Vector2( 38, -1 )
+rotation = -1.5708
+scale = Vector2( 0.8, 1 )
+z_as_relative = false
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 324.644, 295.493, 20.3897, 35.4311 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WeaponManager/Pistol"]
+root_node = NodePath("../Sprite")
+anims/muzzle_flash = SubResource( 2 )
+anims/reload = SubResource( 3 )
+
+[node name="AttackCoolDown" type="Timer" parent="WeaponManager/Pistol"]
+wait_time = 0.7
+
+[node name="Silencer" type="Node2D" parent="WeaponManager"]
 visible = false
-position = Vector2( 4, 13 )
+position = Vector2( 26, 13 )
+script = ExtResource( 7 )
+Bullet = ExtResource( 10 )
+max_ammo = 5
+
+[node name="Sprite" type="Sprite" parent="WeaponManager/Silencer"]
+position = Vector2( 8, -2 )
+scale = Vector2( 1.6201, 1.2 )
+texture = ExtResource( 11 )
+
+[node name="EndOfGun" type="Position2D" parent="WeaponManager/Silencer"]
+position = Vector2( 32, -2 )
+
+[node name="MuzzleFlash" type="Sprite" parent="WeaponManager/Silencer"]
+position = Vector2( 45, -3 )
+rotation = -1.5708
+scale = Vector2( 0.8, 1 )
+z_as_relative = false
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 324.644, 295.493, 20.3897, 35.4311 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WeaponManager/Silencer"]
+root_node = NodePath("../Sprite")
+anims/muzzle_flash = SubResource( 4 )
+anims/reload = SubResource( 5 )
+
+[node name="AttackCoolDown" type="Timer" parent="WeaponManager/Silencer"]
+
+[node name="SubmachineGun" type="Node2D" parent="WeaponManager"]
+visible = false
+position = Vector2( 89, 31 )
+script = ExtResource( 7 )
+Bullet = ExtResource( 10 )
 semi_auto = false
 
-[node name="Weapon" parent="." instance=ExtResource( 7 )]
-position = Vector2( 21, 12 )
+[node name="Sprite" type="Sprite" parent="WeaponManager/SubmachineGun"]
+position = Vector2( -56, -18 )
+scale = Vector2( 1.0197, 1.2 )
+texture = ExtResource( 5 )
 
-[node name="PlayerScore" parent="." instance=ExtResource( 8 )]
+[node name="EndOfGun" type="Position2D" parent="WeaponManager/SubmachineGun"]
+position = Vector2( -37, -19 )
+
+[node name="MuzzleFlash" type="Sprite" parent="WeaponManager/SubmachineGun"]
+position = Vector2( -18, -19 )
+rotation = -1.5708
+scale = Vector2( 0.8, 1 )
+z_as_relative = false
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 324.644, 295.493, 20.3897, 35.4311 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WeaponManager/SubmachineGun"]
+root_node = NodePath("../Sprite")
+anims/muzzle_flash = SubResource( 2 )
+anims/reload = SubResource( 3 )
+
+[node name="AttackCoolDown" type="Timer" parent="WeaponManager/SubmachineGun"]
+wait_time = 0.1

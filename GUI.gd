@@ -1,11 +1,10 @@
 extends CanvasLayer
 
-
-onready var health_bar = $MarginContainer/Rows/BottomRow/HealthSection/HealthBar
-onready var health_tween = $MarginContainer/Rows/BottomRow/HealthSection/HealthTween
-onready var current_ammo = $MarginContainer/Rows/BottomRow/AmmoSection/CurrentAmmo
-onready var max_ammo = $MarginContainer/Rows/BottomRow/AmmoSection/MaxAmmo
-
+onready var health_bar = $MarginContainer/Row/BottomRow/HealthBar
+onready var health_tween = $MarginContainer/Row/BottomRow/HealthBar/HealthTween
+onready var current_ammo = $MarginContainer/Row/BottomRow/AmmoInfo/CurrentAmmo
+onready var max_ammo = $MarginContainer/Row/BottomRow/AmmoInfo/MaxAmmo
+onready var score_ui =$MarginContainer/Row/TopRow/ScoreUI
 
 var player: Player
 
@@ -18,6 +17,7 @@ func set_player(player: Player):
 
 	set_weapon(player.weapon_manager.get_current_weapon())
 	player.weapon_manager.connect("weapon_changed", self, "set_weapon")
+	
 
 
 func set_weapon(weapon: Weapon):
@@ -28,13 +28,12 @@ func set_weapon(weapon: Weapon):
 
 
 func set_new_health_value(new_health: int):
-	var original_color = Color("#5c1c1c")
-	var highlight_color = Color("#ff7e7e")
+	var original_color = Color("#1b310c")
+	var highlight_color = Color("#5a49ee")
 
-#	var bar_style = health_bar.get("custom_styles/fg")
 	health_tween.interpolate_property(health_bar, "value", health_bar.value, new_health, 0.4,Tween.TRANS_LINEAR, Tween.EASE_IN)
-	health_tween.interpolate_property(bar_style, "bg_color", original_color, highlight_color, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	health_tween.interpolate_property(bar_style, "bg_color", highlight_color, original_color, 0.2, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.2)
+	health_tween.interpolate_property(health_bar.get("custom_styles/fg"), "bg_color", original_color, highlight_color, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	health_tween.interpolate_property(health_bar.get("custom_styles/fg"), "bg_color", highlight_color, original_color, 0.2, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.2)
 	health_tween.start()
 
 
@@ -44,3 +43,5 @@ func set_current_ammo(new_ammo: int):
 
 func set_max_ammo(new_max_ammo: int):
 	max_ammo.text = str(new_max_ammo)
+	
+

@@ -80,6 +80,9 @@ position = Vector2( 24, 0 )
 [node name="Health" parent="." instance=ExtResource( 2 )]
 health = 200
 
+[node name="AttackCoolDown" type="Timer" parent="."]
+wait_time = 0.7
+
 [node name="MuzzleFlash" type="Sprite" parent="."]
 visible = false
 position = Vector2( 32, 0 )
@@ -94,6 +97,3 @@ region_rect = Rect2( 324.644, 295.493, 20.3897, 35.4311 )
 root_node = NodePath("../Sprite")
 anims/muzzle_flash = SubResource( 2 )
 anims/reload = SubResource( 3 )
-
-[node name="AttackCoolDown" type="Timer" parent="."]
-wait_time = 0.7
