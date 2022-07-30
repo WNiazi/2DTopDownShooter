@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Bullet.gd"
 }, {
-"base": "Node2D",
-"class": "Health",
-"language": "GDScript",
-"path": "res://Health.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -43,7 +38,6 @@ _global_script_class_icons={
 "AI": "",
 "Actor": "",
 "Bullet": "",
-"Health": "",
 "Player": "",
 "Weapon": ""
 }

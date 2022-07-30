@@ -10,10 +10,12 @@ export (int) var speed = 100
 
 onready var collision_shape = $CollisionShape2D
 onready var health_stat = $Health
+onready var player_score =$PlayerScore 
 onready var weapon_manager = $WeaponManager
 onready var weapon =$Weapon 
-onready var player_total_score =$PlayerScore.score 
-onready var player_total_lives = $PlayerScore.lives
+onready var attack_cooldown =$AttackCoolDown
+#onready var player_total_score =$PlayerScore.score 
+#onready var player_total_lives = $PlayerScore.lives
 
 
 func _physics_process(delta: float) -> void:
@@ -39,34 +41,29 @@ func _physics_process(delta: float) -> void:
 
 func handle_hit():
 	health_stat.health -= 5
-	PlayerScore.score -= 0 
+	player_score.score -= 1 
 	
 	emit_signal ("player_health_changed", health_stat.health)
-#	emit_signal ("player_score_changed", PlayerScore.score)
-#	emit_signal ("player_lives_changed", PlayerScore.lives)
-	if health_stat.health <= 0 and PlayerScore.lives <= 0:
+	emit_signal ("player_score_changed", player_score.score)
+
+	if health_stat.health <= 0:
 		die()
 		#connect to game over
-	elif health_stat.health <=0: 
-		PlayerScore.lives -=1
-		die() 
+#	elif health_stat.health <=0: 
+#		PlayerScore.lives -=1
+#		die() 
 
 		
 func die(): 
 	emit_signal ("died")
-	PlayerScore.lives -= 1
-	GlobalSignals.enemy_killed() 
-	print("on player")
+#	PlayerScore.lives -= 1
+#	GlobalSignals.enemy_killed() 
+#	print("on player")
 	queue_free () 
 #connect to gameover
 
-
-func _on_PlayerScore_player_total_lives():
-	if player_total_lives == 3 : 
-		print ("on Player and settings")
-		queue_free()
 		
-func _on_PlayerScore_player_total_score():
-	if player_total_score == 100: 
-		print ("on placertotal score")
-		queue_free()
+#func _on_PlayerScore_player_total_score():
+#	if player_total_score == 100: 
+#		print ("on placertotal score")
+#		queue_free()

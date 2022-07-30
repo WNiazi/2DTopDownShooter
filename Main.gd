@@ -1,5 +1,6 @@
 extends Node2D
 
+
 const Player = preload("res://Player.tscn")
 const GameOverScreen = preload ("res://GameOverScreen.tscn")
 const PauseScreen = preload("res://PauseScreen.tscn")
@@ -20,7 +21,6 @@ func _ready() -> void:
 	GlobalSignals.connect("bullet_fired", bullet_manager, "handle_bullet_spawned")
 #	PlayerScore.connect ("player_wins", self, "handle_player_wins")
 #	PlayerScore.connect("player_lost", self, "handle_player_lost")
-	
 	
 	spawn_player() 
 	set_camera_limits() 

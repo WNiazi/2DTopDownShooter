@@ -17,6 +17,7 @@ var current_ammo: int = max_ammo setget set_current_ammo
 onready var end_of_gun = $EndOfGun 
 onready var animation_player = $AnimationPlayer
 onready var muzzle_flash = $MuzzleFlash
+onready var attack_cooldown =$AttackCoolDown
 
 
 func _ready() ->void: 
@@ -26,6 +27,7 @@ func _ready() ->void:
 
 func start_reload(): 
 	animation_player.play("reload")
+	#fom the AI "handle_reload" function 
 	
 	
 func _stop_reload(): 
@@ -44,13 +46,15 @@ func set_current_ammo(new_ammo: int) :
 	
 	
 func shoot (): 
-	if current_ammo != 0 and Bullet != null: 
+	if current_ammo != 0 and attack_cooldown.is_stopped() and Bullet != null: 
 		var bullet_instance = Bullet.instance()
 		var direction = (end_of_gun.global_position -global_position).normalized()
 		GlobalSignals.emit_signal("bullet_fired", bullet_instance, end_of_gun.global_position, direction)
+		attack_cooldown.start() 
 		animation_player.play("muzzle_flash")
 		set_current_ammo(current_ammo - 1)
-		PlayerScore.score +=5
+		
+#	
 
 		
 

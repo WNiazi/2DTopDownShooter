@@ -4,10 +4,10 @@
 [ext_resource path="res://Bullet.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 2, 1 )
+extents = Vector2( 1, 2 )
 
 [node name="Bullet" type="Area2D"]
-rotation = 1.5708
+rotation = -1.5708
 script = ExtResource( 2 )
 speed = 20
 
@@ -15,8 +15,8 @@ speed = 20
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-rotation = 1.5708
-scale = Vector2( 0.307438, 0.282269 )
+rotation = -3.14159
+scale = Vector2( 0.450718, 0.315019 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 194, 46, 4, 10 )

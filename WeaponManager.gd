@@ -49,7 +49,7 @@ func _unhandled_input(event: InputEvent) ->void:
 #	elif event.is_action_released("weapon3"): 
 #		switch_weapon(weapons[2])
 		
-		
+		#from the AI 
 func reload (): 
 	current_weapon.start_reload()
 	

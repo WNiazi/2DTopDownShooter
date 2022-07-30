@@ -9,6 +9,3 @@ scale = Vector2( 1.6201, 1.2 )
 
 [node name="MuzzleFlash" parent="." index="3"]
 position = Vector2( 46, -1 )
-
-[node name="WeaponGun" parent="." index="5"]
-position = Vector2( 0, -4 )

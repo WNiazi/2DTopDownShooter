@@ -31,7 +31,7 @@ func has_reached_position(location: Vector2) -> bool:
 
 
 func handle_hit():
-	health_stat.health -= 10 
+	health_stat.health -= 20
 	if health_stat.health <= 0:
 		die()
 

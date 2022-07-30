@@ -9,8 +9,8 @@
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://BulletImpact.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ImpactManger.gd" type="Script" id=9]
-[ext_resource path="res://PlayerScore.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/forest (1).ogg" type="AudioStream" id=11]
+[ext_resource path="res://Spawn.tscn" type="PackedScene" id=18]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Grass.png "
@@ -357,11 +357,6 @@ limit_top = 0
 limit_smoothed = true
 smoothing_enabled = true
 
-[node name="Actor" parent="." instance=ExtResource( 1 )]
-position = Vector2( 286, 38 )
-collision_layer = 0
-collision_mask = 7
-
 [node name="BulletManager" type="Node2D" parent="."]
 position = Vector2( 0, -5 )
 rotation = 1.5708
@@ -375,9 +370,10 @@ position = Vector2( 1, 2 )
 
 [node name="GUI" parent="." instance=ExtResource( 7 )]
 
-[node name="PlayerScore" parent="." instance=ExtResource( 10 )]
-
 [node name="ForestSounds" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
 
-[connection signal="player_total_lives" from="PlayerScore" to="Player" method="_on_PlayerScore_player_total_lives"]
+[node name="Spawn" parent="." instance=ExtResource( 18 )]
+position = Vector2( 304, 111 )
+
+[node name="Actor" parent="." instance=ExtResource( 1 )]
