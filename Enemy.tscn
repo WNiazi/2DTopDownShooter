@@ -4,7 +4,7 @@
 [ext_resource path="res://Weapon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/manBlue_hold.png" type="Texture" id=3]
 [ext_resource path="res://AI.gd" type="Script" id=4]
-[ext_resource path="res://Enemy.gd" type="Script" id=5]
+[ext_resource path="res://Actor.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 19.5, 22.5 )

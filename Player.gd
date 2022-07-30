@@ -33,13 +33,13 @@ func _physics_process(delta: float) -> void:
 
 func handle_hit():
 	health_stat.health -= 5
+	emit_signal("player_health_changed", health_stat.health)
 	if health_stat.health <= 0:
 		die()
 
 		
 func die(): 
 	emit_signal ("died")
-
 	queue_free () 
 #connect to gameover
 

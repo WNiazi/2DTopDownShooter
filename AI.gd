@@ -7,7 +7,7 @@ signal state_changed(new_state)
 
 enum State {
 	PATROL,
-	ENGAGE,
+	ENGAGE
 }
 
 
@@ -16,6 +16,7 @@ onready var player_detection_zone =$PlayerDetectionZone
 
 
 var current_state: int = -1 setget set_state
+
 var actor: Actor = null
 var target: KinematicBody2D = null
 var weapon: Weapon = null

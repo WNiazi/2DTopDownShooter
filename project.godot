@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Actor",
 "language": "GDScript",
-"path": "res://Enemy.gd"
+"path": "res://Actor.gd"
 }, {
 "base": "Area2D",
 "class": "Bullet",

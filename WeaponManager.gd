@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var current_weapon =$Pistol 
-onready var weapon:Weapon = $WeaponManger
+onready var weapon:Weapon = $Weapon
 
 signal weapon_changed (new_weapon)
 

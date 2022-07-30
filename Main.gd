@@ -10,7 +10,6 @@ const PauseScreen = preload("res://PauseScreen.tscn")
 onready var forest_sound =$ForestSounds
 onready var bullet_manager = $BulletManager 
 onready var player: Player = $Player 
-onready var camera = $Player/Camera2D
 onready var gui = $GUI
 onready var ground = $Ground
 
@@ -19,23 +18,17 @@ func _ready() -> void:
 	$ForestSounds.play() 
 	randomize() 
 	GlobalSignals.connect("bullet_fired", bullet_manager, "handle_bullet_spawned")
-#	PlayerScore.connect ("player_wins", self, "handle_player_wins")
-#	PlayerScore.connect("player_lost", self, "handle_player_lost")
-	
 
 	spawn_player() 
-	
-	#var emeny_respawns =$EnemyRespawnPoints 
-	#var player_respawns = $PlayerRespawnPoints
 
 
-func set_camera_limits(): 
-	var map_limits = $Ground.get_used_rect()
-	var map_cellsize = $Ground.cell_size	
-	camera.limit_left = map_limits.position.x * map_cellsize.x 
-	camera.limit_right = map_limits.end.x * map_cellsize.x 
-	camera.limit_top = map_limits.position.y * map_cellsize.y 
-	camera.limit_bottom = map_limits.end.y * map_cellsize.y
+#func set_camera_limits(): 
+#	var map_limits = $Ground.get_used_rect()
+#	var map_cellsize = $Ground.cell_size	
+#	camera.limit_left = map_limits.position.x * map_cellsize.x 
+#	camera.limit_right = map_limits.end.x * map_cellsize.x 
+#	camera.limit_top = map_limits.position.y * map_cellsize.y 
+#	camera.limit_bottom = map_limits.end.y * map_cellsize.y
 
 
 func spawn_player(): 
