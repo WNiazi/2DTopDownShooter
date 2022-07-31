@@ -33,15 +33,22 @@ _Further exploration objectives:_
 * Images/Sprites/Tilesheets 
 
 ## Project Setup/Installation Instructions <a id="setup"></a>
-* Navigate to the directory in which you would like to clone this project.
-* Run `git clone https://github.com/wajmaniazi/shootthemup.git` in terminal.
-* Run `cd shootthemup` to navigate into new project directory.
-* Open the Godot after downloading 
+* Navigate through the files to view project.  
+* Open the Godot after downloading it from https://godotengine.org/download/windows. Create a new project. 
+* Viewed tutorials from the following sites: 
+_https://www.youtube.com/channel/UCLzFt-NdfCm8WFKTyqD0yJw
+_https://www.youtube.com/watch?v=mAbG8Oi-SvQ&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a
+_https://www.youtube.com/watch?v=YqkfTjXzA9w
+*Assets/Spirit/TileSheets/Music
+_https://www.kenney.nl/assets/topdown-shooter
+_https://cainos.itch.io/pixel-art-top-down-basic
+_https://opengameart.org/art-search-advanced?keys=&field_art_type_tid%5B%5D=12&sort_by=count&sort_order=DESC
+
 
 ## Known Bugs <a id="bugs"></a>
-- _Movement and Engagement of Enemy_
 - Scoring system 
-- 3 lives not incorporated with health.stat
+_Unable to get GameOver Screen to work well 
+_Unable to incorporate lives along with Health, may need to try altering spawning 
 
 ## License <a id="license"></a>
 Copyright (c) 2022 _**Wajma Niazi**_
@@ -49,4 +56,4 @@ Copyright (c) 2022 _**Wajma Niazi**_
 _Note:  Majority of the code was based on tutorials online, including the images and music._
 
 ## Contact <a id="contact"></a>
-Wajma Niazi [Email](mailto:w1niazi@gmail.com) • [LinkedIn](https://www.linkedin.com/in/wniazi/) • [GitHub](https://github.com/wniazi)
+Wajma Niazi [Email](mailto:w1niazi@gmail.com) • [LinkedIn](https://www.linkedin.com/in/wajma-niazi/) • [GitHub](https://github.com/WNiazi)
