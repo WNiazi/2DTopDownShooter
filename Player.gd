@@ -8,9 +8,7 @@ export (int) var speed = 100
 
 onready var collision_shape = $CollisionShape2D
 onready var health_stat = $Health
-onready var player_score =$PlayerScore 
 onready var weapon_manager = $WeaponManager
-onready var weapon =$Weapon 
 
 
 func _physics_process(delta: float) -> void:

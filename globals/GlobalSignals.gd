@@ -1,15 +1,8 @@
 extends Node
 
-
-#var score = goalScore
-#var goalScore = 100  
+var score =0 
 
 signal bullet_fired(bullet, position, direction) 
 signal bullet_impacted(position, direction)
 
-
-#func enemy_killed(): 
-#	score -= 1 
-#	print("score")
-#	if score<= 0 : 
-#		print ("You win")
+#signal change_score(new_score, anything "handle_hit) 

@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 onready var title =$PanelContainer/MarginContainer/Rows/Title
+onready var score_ui: Label = get_node("Label") 
 
 #make sure to attach to the right one
 func _ready()->void: 

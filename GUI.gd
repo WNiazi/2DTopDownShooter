@@ -4,7 +4,8 @@ onready var health_bar = $MarginContainer/Row/BottomRow/HealthBar
 onready var health_tween = $MarginContainer/Row/BottomRow/HealthBar/HealthTween
 onready var current_ammo = $MarginContainer/Row/BottomRow/AmmoInfo/CurrentAmmo
 onready var max_ammo = $MarginContainer/Row/BottomRow/AmmoInfo/MaxAmmo
-onready var score_ui =$MarginContainer/Row/TopRow/ScoreUI
+onready var score_ui: Label = get_node("MarginContainer/Row/TopRow/ScoreUI") 
+
 
 var player: Player
 
@@ -18,7 +19,6 @@ func set_player(player: Player):
 	set_weapon(player.weapon_manager.get_current_weapon())
 	player.weapon_manager.connect("weapon_changed", self, "set_weapon")
 	
-
 
 func set_weapon(weapon: Weapon):
 	set_current_ammo(weapon.current_ammo)
@@ -44,4 +44,3 @@ func set_current_ammo(new_ammo: int):
 func set_max_ammo(new_max_ammo: int):
 	max_ammo.text = str(new_max_ammo)
 	
-

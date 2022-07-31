@@ -1,7 +1,6 @@
 extends Node2D
 
-onready var current_weapon =$Pistol 
-onready var weapon:Weapon = $Weapon
+onready var current_weapon: Weapon =$Pistol 
 
 signal weapon_changed (new_weapon)
 
@@ -30,11 +29,11 @@ func get_current_weapon()->Weapon:
 	
 	
 func switch_weapon (weapon:Weapon):
-	if weapon==current_weapon: 
+	if weapon == current_weapon: 
 		return 
 	current_weapon.hide()
 	weapon.show()
-	current_weapon =weapon 
+	current_weapon = weapon 
 	emit_signal("weapon_changed", current_weapon)
 
 func _unhandled_input(event: InputEvent) ->void: 

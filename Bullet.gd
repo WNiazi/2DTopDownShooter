@@ -33,6 +33,8 @@ func _on_KillTimer_timeout()->void:
 #duck typing, if it has this method than you do this 
 func _on_Bullet_body_entered(body: Node) ->void: 
 	if body.has_method("handle_hit"):
-		GlobalSignals.emit_signal("bullet_impacted", body.global_position, direction)
+		GlobalSignals.emit_signal("bullet_impacted", global_position, direction)
 		body.handle_hit()
 		queue_free() 
+		
+		#above you can doe an bullet-impact vs envir-impact

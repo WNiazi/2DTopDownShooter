@@ -12,6 +12,7 @@ onready var weapon: Weapon = $Weapon
 
 
 export (int) var speed = 150
+export (int)var score = 0
 
 
 func _ready() -> void:
@@ -31,6 +32,7 @@ func has_reached_position(location: Vector2) -> bool:
 
 
 func handle_hit():
+	GlobalSignals.score +=10
 	health_stat.health -= 10 
 	if health_stat.health <= 0:
 		die()

@@ -1,11 +1,11 @@
 extends CanvasLayer
 
 func _ready()->void: 
-	get_tree().paused =true 
+	get_tree().paused = true 
 
 
 func _on_ContinueButton_pressed() ->void:
-	get_tree().pause =false  
+	get_tree().paused = false 
 	queue_free() 
 
 func _on_QuitButton_pressed() ->void:

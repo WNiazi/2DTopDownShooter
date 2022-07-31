@@ -35,23 +35,23 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-
 	match current_state:
 		State.PATROL:
 			if not patrol_location_reached:
-				actor_velocity = actor.velocity_toward(patrol_location)
-				actor.rotate_toward(patrol_location)
-				actor.move_and_slide(actor_velocity)
-				if actor.global_position.distance_to(patrol_location)<5: 
-					patrol_location_reached = true
+				actor.move_and_slide(actor_velocity) #actor-velocity is set below; set to patrol location which is randomized
+				actor.rotate_toward(patrol_location) #turns body/head where it is heading
+				if actor.has_reached_position(patrol_location):
+					patrol_location_reached = true 
 					actor_velocity = Vector2.ZERO
-					patrol_timer.start()
+					patrol_timer.start() 
 			
 		State.ENGAGE:
-			if target != null and weapon != null:
+			if target != null and weapon != null: 
 				actor.rotate_toward(target.global_position)
-				if abs(actor.global_position.angle_to(target.global_position)) < 0.1:
-					weapon.shoot()
+				if abs(actor.global_position.angle_to(target.global_position)) <0.1: 
+					#above is causes the actor to wait till rotated fully before shooting
+					weapon.shoot() 
+
 			else:
 				print("In the engage state but no weapon/target")
 		_:
@@ -95,11 +95,12 @@ func _on_PatrolTimer_timeout() -> void:
 
 
 
-func _on_PlayerDetectionZone_body_entered(body: KinematicBody2D)->void:
-	set_state(State.ENGAGE)
-	target = body
+func _on_PlayerDetectionZone_body_entered(body: Node) -> void:
+	if body.is_in_group ("player"):
+		set_state(State.ENGAGE)
+		target = body
 
-func _on_PlayerDetectionZone_body_exited(body: KinematicBody2D)->void:
+func _on_PlayerDetectionZone_body_exited(body: Node) -> void:
 		if target and body == target:
 			set_state(State.PATROL)
 			target = null
